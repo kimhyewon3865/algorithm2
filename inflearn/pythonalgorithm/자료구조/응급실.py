@@ -7,13 +7,11 @@ arr = deque(arr)
 cnt = 0
 
 while True:
-    
+    tmp = arr.popleft()
     if max(arr) != arr[0]:
-        tmp = arr.popleft()
         arr.append(tmp)
         
     else:
-        arr.popleft()
         cnt += 1
         if m == 0:
             print(cnt)
