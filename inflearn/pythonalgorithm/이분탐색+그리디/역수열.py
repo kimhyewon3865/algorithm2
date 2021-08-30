@@ -1,25 +1,16 @@
 import sys
-sys.stdin = open("input.txt","rt")
+# sys.stdin = open("input.txt","rt")
 
 n = int(input())
 arr = list(map(int, input().split()))
-res = [0 for i in range(n)]
+res = []
 
-for i in range(n):
-    tmpIdx = arr[i]
-
-    if res[0:arr[i]].count(0) != arr[i]:
-        while True:
-            print("true", tmpIdx, res[tmpIdx])
-            if res[tmpIdx] != 0:
-                tmpIdx += 1
-            else:
-                res[tmpIdx] = i+1
-                print("true else", tmpIdx, res[tmpIdx], res)
-                break
+for i in range(n-1,-1,-1):
+    idx = arr[i]
+    if idx >= len(res):
+        res.append(i+1)
     else:
-        res[tmpIdx] = i+1
-        print("else", tmpIdx, res[tmpIdx], res)
+        res.insert(idx, i+1)
 
-print(res)
-            
+for x in res:
+    print(x, end = ' ')
